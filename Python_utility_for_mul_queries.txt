@@ -1,0 +1,40 @@
+import pymysql
+
+
+def mysqlconnect():
+    conn = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='root123@4!',
+        db='vignesh',
+    )
+
+    cur = conn.cursor()
+
+    # Select query
+    cur.execute("select * from company where location='Pune'")
+
+    output1 = cur.fetchall()
+
+    cur.execute("select * from rachel where name='Pooja'")
+
+    output2 = cur.fetchall()
+
+    cur.execute("select * from company where location='Chennai'")
+
+    output3 = cur.fetchall()
+
+    for i in output1:
+        print(i)
+    for j in output2:
+        print(j)
+    for k in output3:
+        print(k)
+
+    # To close the connection
+    conn.close()
+
+
+# Driver Code
+if __name__ == "__main__":
+    mysqlconnect()
